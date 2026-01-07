@@ -1,0 +1,455 @@
+/* =========================
+   Base / Reset
+========================= */
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Inter", "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  line-height: 1.6;
+  font-size: 1.25rem;
+  color: #383838;           /* body text */
+  background: #F2F2F2;      /* deep blue background */
+  display: flex;
+  justify-content: center;
+}
+
+.footnote {
+  text-align: left;
+  font-size: 0.75rem;
+  color: #737373;
+  margin: 8rem 0;
+}
+/* Height-responsive spacing entire page */
+:root {
+  --top-align: clamp(20px, 4.5vh, 48px); /* shared vertical baseline */
+  --logo-gap: clamp(12px, 6vh, 96px);
+}
+
+/* Logo: replace width-based % gap with vh-based gap */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  margin-top: 0.2em;              /* tiny nudge for optical alignment */
+  margin-bottom: var(--logo-gap); /* space below logo */
+  max-width: 240px;
+  white-space: nowrap;
+}
+
+.logo a {
+  color: inherit;      /* keeps your existing logo color */
+  text-decoration: none;
+  display: inline-block; /* optional but recommended */
+}
+
+/* Highlight text */
+.highlight {
+  color: #C5076C;
+  font-weight: 500; 
+}
+
+.page-layout {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  padding: 1% 0%;
+  gap: 2rem;
+}
+
+/* ===== Sidebar (Desktop) ===== */
+.sidebar {
+  position: relative;
+  width: 300px;
+  background: #F2F2F2;
+  padding: 2rem 1.5rem;   /* ← choose whichever left padding you prefer */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+  height: 100vh;
+}
+
+.sidebar-inner {
+  position: sticky;
+  top: 2rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: clamp(8px, 2.5vh, 28px);   /* proportional vertical rhythm */
+}
+
+/* Nav block: sits lower, but capped; scrolls if too tall */
+#site-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;                 /* REQUIRED for flex scroll */
+  overflow-y: auto;
+  gap: 1rem;
+  padding-right: .25rem;
+  margin-block-start: clamp(8px, 8vh, 20vh);
+  max-height: clamp(240px, 62vh, 70vh);
+}
+
+/* Keep your list + link styles (unchanged) */
+.sidebar nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar nav li { margin-bottom: 1rem; }
+
+/* Nav links + decorative line */
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #383838;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+/* left rule for main nav items */
+.sidebar nav a::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #383838;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active { color: #C5076C; }
+.sidebar nav a:hover::before,
+.sidebar nav a.active::before {
+  opacity: 1; width: 80px; background-color: #C5076C;
+}
+
+/* LinkedIn — same style, no rule, pinned at bottom of the nav column */
+.sidebar nav a.nav-linkedin::before { content: none; }
+.sidebar nav a.nav-linkedin { margin-top: auto; }
+
+
+/* icon sizing */
+.icon-linkedin {
+  width: 1rem; /* tweak size to taste */
+  height: 1rem;
+  display: inline-block;
+}
+
+
+/* Hamburger hidden on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .25rem;
+}
+.menu-toggle svg rect { fill: #000; }
+
+/* =========================
+   Main content
+========================= */
+main {
+  flex: 1;
+  padding: var(--top-align) 3rem 3rem;
+  max-width: 1280px;
+}
+
+/* Sections */
+.section { margin-bottom: 6rem; }
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(149, 163, 178, 0.4);
+  padding-bottom: 0.5rem;
+  color: #000;
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(149, 163, 178, 0.4);
+  padding-bottom: 0.5rem;
+  color: #000;
+}
+
+/* Project Grid & Cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #383838;
+  border-radius: 3px;
+  margin-bottom: 2rem;
+  opacity: 90%;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.project-card img {
+  width: 100%;
+  height: 275px;
+  display: block;
+  object-fit: cover;
+  border-radius: 3px;
+}
+.project-card h4 { margin: 0.75rem 0 0; font-size: 1rem; color: #000; }
+.project-card p  { margin: 0 0 1rem;     font-size: 1rem; color: #383838; }
+.project-card:hover { opacity: 100%; transform: translateY(-5px); }
+
+/* Experience */
+#experience { margin-bottom: 4rem; }
+#experience h2 { margin-bottom: 2rem; }
+
+.experience-card {
+  display: flex;
+  background: #F2F2F2;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+.experience-date {
+  flex: 0 0 10%;         /* fixed width column on desktop */
+  font-weight: bold;
+  color: #383838;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 0.95rem;
+}
+.experience-details h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+  transition: color 0.2s ease;
+}
+.experience-details p {
+  color: #383838;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Skills */
+.skills { display: flex; flex-wrap: wrap; list-style: none; }
+.skills li { font-size: 1rem; color: #9442A9; font-weight: 500; }
+
+
+/* =========================
+ Subpages
+========================= */
+
+.project-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem; /* optional */
+}
+.project-hero {
+  margin-bottom: 2rem;
+}
+
+.project-hero video.hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  object-fit: contain;       /* keep it beautifully cropped */
+}
+
+
+/* Masonry: two columns on desktop, one on mobile */
+.project-masonry {
+  column-count: 1;
+  column-gap: 2rem;         /* gutter between columns */
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.m-item {
+  break-inside: avoid;          /* keep each figure intact */
+  margin: 0 0 2rem;
+}
+
+.m-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;         /* match your style */
+}
+
+/* Global subtle image/video shadow */
+.project-card img,
+.m-item img,
+.project-hero img,
+.project-hero .hero-video  {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+
+/* =========================
+   Desktop only (>=769px)
+========================= */
+@media (min-width: 769px) {
+  .section {
+    scroll-margin-top: 2rem; /* spacing above page */
+  }
+
+  /* Masonry layout */
+  .project-masonry { column-count: 2; }
+
+  .project-masonry .m-item.wide {
+  width: 100%;
+  column-span: all;
+  break-inside: avoid;
+  display: block;
+  }
+
+  /* Extra LinkedIn spacing on desktop */
+  .sidebar nav a.nav-linkedin {
+    margin-top: 2em; /* gives visual separation */
+  }
+}
+
+/* =========================
+   Mobile (<=768px)
+========================= */
+@media (max-width: 768px) {
+  :root { --mobile-header-h: 56px; }      /* header height used below */
+  .section { scroll-margin-top: var(--mobile-header-h); }
+
+  /* Layout stacks */
+  .page-layout {
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  /* Sidebar becomes top header bar */
+  .sidebar {
+    position: sticky;          /* pin whole header */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: auto;
+    padding: 0 .8rem;          /* no vertical padding */
+    border-bottom: 1px solid #383838;
+    background: #F2F2F2;
+    display: flex;
+    align-items: center;       /* center the row vertically */
+  }
+
+  /* Header row: logo + hamburger */
+  .sidebar-inner {
+    position: relative;        /* anchor for dropdown nav */
+    top: auto;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    width: 100%;
+    height: var(--mobile-header-h);
+  }
+
+  .logo {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* Hamburger button */
+  .menu-toggle {
+    position: static;          /* flex item in the row */
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;              /* comfy tap target */
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    cursor: pointer;
+    z-index: 1002;             /* just for stacking, not positioning */
+  }
+  .menu-toggle svg { width: 24px; height: 24px; }
+  .menu-toggle svg rect { fill: #000; }
+
+  /* Mobile dropdown nav */
+  #site-nav {
+    display: none;             /* hidden until toggled */
+    position: absolute;        /* anchored to .sidebar-inner */
+    top: 100%;
+    right: 0;
+    margin-block-start: 0;     /* reset desktop offset */
+    max-height: none;          /* no scroll constraints */
+    overflow: visible;
+    background: #F2F2F2;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    min-width: 180px;
+    z-index: 1001;
+    transform: translateY(-3px);   /* ← MOVE UP */
+  }
+  #site-nav.active { display: block; }
+
+  #site-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* extra delineation before LinkedIn */
+  .sidebar nav a.nav-linkedin {
+    margin-top: .9rem;
+  }
+
+  /* No decorative line in compact menu */
+  .sidebar nav a::before {
+    display: none;
+  }
+
+  /* Content adjustments */
+  main { padding: 1rem; }
+  .project-grid { grid-template-columns: 1fr; }
+  .experience-card { flex-direction: column; gap: .75rem; }
+  .experience-date { flex: none; width: 80%; margin-bottom: 0; }
+}
+
+/* =========================
+   Short desktops(short height)
+========================= */
+@media (max-height: 800px) and (min-width: 769px) {
+  .logo { font-size: 2.2rem; }
+  #site-nav { gap: 0.75rem; }
+  .sidebar nav a { gap: 0.75rem; }
+}
+
+@media (max-height: 700px) and (min-width: 769px) {
+  .logo { font-size: 2rem; }
+  #site-nav { gap: 0.6rem; }
+  .sidebar nav a { gap: 0.6rem; }
+  .sidebar nav a::before { width: 32px; }
+  .sidebar nav a:hover::before,
+  .sidebar nav a.active::before { width: 56px; }
+}

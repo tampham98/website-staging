@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tam Pham — Portfolio</title>
+    <!-- Your stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <h1 class="logo"><a href="index.html">Tam Pham</a></h1>
+
+          <!-- Hamburger button -->
+          <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="2" rx="1"></rect>
+              <rect x="3" y="11" width="18" height="2" rx="1"></rect>
+              <rect x="3" y="16" width="18" height="2" rx="1"></rect>
+            </svg>
+          </button>
+
+          <nav id="site-nav">
+            <ul>
+              <li><a href="./index.html#about">About</a></li>
+              <li><a href="./index.html#projects">Projects</a></li>
+              <li><a href="./index.html#experience">Experience</a></li>
+            </ul>
+            <a href="https://www.linkedin.com/in/tam-pham-i-am"
+  class="nav-linkedin"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <svg
+    class="icon-linkedin"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 
+         0-2.15 1.45-2.15 2.95v5.67H9.32V9h3.41v1.56h.05c.48-.9 
+         1.66-1.86 3.42-1.86 3.66 0 4.34 2.41 4.34 5.54v6.21zM5.34 
+         7.43a2.07 2.07 0 11-.01-4.14 2.07 2.07 0 01.01 4.14zm1.78 
+         13.02H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .78 0 1.72v20.55C0 
+         23.22.8 24 1.78 24h20.44c.98 0 1.78-.78 1.78-1.73V1.72C24 
+         .78 23.2 0 22.22 0z"
+      fill="currentColor"
+    />
+  </svg>
+  LinkedIn
+</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="content">
+        <figure class="project-hero">
+          <img src="./assets/MS_Azure_Ad_cover.jpg" alt="Microsoft Azure Ads hero image">
+        </figure>
+        <p><span class="highlight">Microsoft Azure Ads</span><br>
+          This project centered on building a unified 
+          visual system for Azure's e-book promotional ads. I crafted visually engaging patterns, established 
+          consistent placement rules, and refined the CTA hierarchy to improve readability and drive the 
+          two primary actions: signing up for a free Azure account or requesting contact.
+          <br><br>
+          What began as a request for six concepts expanded into 15 finished ads, as the team responded 
+          strongly to the creative direction. The cohesive system elevated brand clarity and supported more 
+          reliable, insight-driven performance testing for future campaigns.
+        </p>
+
+        <section class="project-masonry">
+          <figure class="m-item">
+            <img src="./assets/MS_Azure_Ad_lifestyle_mockup.jpg" alt="..." loading="lazy">
+          </figure>
+
+          <figure class="m-item">
+            <img src="./assets/Az_EbookInserts_2.png" alt="..." loading="lazy">
+          </figure>
+
+          <figure class="m-item">
+            <img src="./assets/AZ_EbookAdInserts.jpg" alt="..." loading="lazy">
+          </figure>
+
+          <figure class="m-item">
+            <img src="./assets/MS_Azure_Ad_lifestyle_mockup2.jpg" alt="..." loading="lazy">
+          </figure>
+
+          <figure class="m-item wide">
+            <img src="./assets/MS_Azure_Ad_lifestyle_mockup3.jpg" alt="..." loading="lazy">
+          </figure>
+
+          <figure class="m-item wide">
+            <img src="./assets/MS_Azure_Ad_lifestyle_mockup4.png" alt="..." loading="lazy">
+          </figure>
+        </section>
+
+        <section id="projects" class="section">
+          <h3>Next Projects</h3>
+          <div class="project-grid">
+
+          <a href="./project_ms_build.html" class="project-card">
+          <img src="./assets/AZ_Build_cover.png" alt="Microsoft Build — Responsible Machine Learning">
+          <h4>Microsoft Build Event</h4>
+          <p>Concept creation, design, and motion storyboard for event visuals.</p>
+          </a>
+
+          <a href="./project_ms_azopensource.html" class="project-card">
+          <img src="./assets/AzureOpenSourceDay_cover.png" alt="Azure Open Source Day">
+          <h4>Azure Open Source Day</h4>
+          <p>Image creation and designs for event visuals.</p>
+          </a>
+          </div>
+        </section>
+    <footer class="footnote">
+    © 2026 Tam Pham. Designed and coded by me.
+    </footer>
+      </main>
+    </div>
+
+    <!-- JS at the very end so the DOM is loaded -->
+    <script>
+      // ===== Cache DOM refs =====
+      const sections = document.querySelectorAll('section');
+      const siteNav = document.getElementById('site-nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navTopLinks = siteNav.querySelectorAll('ul > li > a'); // About, Projects, Experience
+
+      // ===== Scroll handler: set active link =====
+      function setActiveOnScroll() {
+        let current = '';
+        const offset = 120; // adjust if header height changes
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - offset;
+          if (window.scrollY >= sectionTop) current = section.id;
+        });
+
+        navTopLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        });
+      }
+
+      window.addEventListener('scroll', setActiveOnScroll, { passive: true });
+      document.addEventListener('DOMContentLoaded', setActiveOnScroll);
+
+      // ===== Mobile hamburger =====
+      menuToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('active');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+      });
+
+      // Close menu after clicking a nav item (mobile)
+      siteNav.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', () => {
+          siteNav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
+
+  </body>
+
+</html>
