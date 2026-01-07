@@ -20,6 +20,12 @@ body {
   color: #737373;
   margin: 8rem 0;
 }
+
+.footnote a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 /* Height-responsive spacing entire page */
 :root {
   --top-align: clamp(20px, 4.5vh, 48px); /* shared vertical baseline */
