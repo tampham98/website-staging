@@ -9,7 +9,7 @@ body {
   line-height: 1.6;
   font-size: 1.25rem;
   color: #383838;           /* body text */
-  background: #F2F2F2;      /* deep blue background */
+  background: #FAFAFA;      /* deep blue background */
   display: flex;
   justify-content: center;
 }
@@ -69,7 +69,7 @@ body {
 .sidebar {
   position: relative;
   width: 300px;
-  background: #F2F2F2;
+  background: #FAFAFA;
   padding: 2rem 1.5rem;   /* ← choose whichever left padding you prefer */
   display: flex;
   flex-direction: column;
@@ -220,7 +220,7 @@ main {
 
 .experience-card {
   display: flex;
-  background: #F2F2F2;
+  background: #FAFAFA;
   border-radius: 10px;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -355,7 +355,7 @@ main {
     height: auto;
     padding: 0 .8rem;          /* no vertical padding */
     border-bottom: 1px solid #383838;
-    background: #F2F2F2;
+    background: #FAFAFA;
     display: flex;
     align-items: center;       /* center the row vertically */
   }
@@ -409,7 +409,7 @@ main {
     margin-block-start: 0;     /* reset desktop offset */
     max-height: none;          /* no scroll constraints */
     overflow: visible;
-    background: #F2F2F2;
+    background: #FAFAFA;
     border: 1px solid #383838;
     border-radius: 10px;
     padding: 1.25rem 1rem;
