@@ -19,14 +19,12 @@ body {
   font-size: 0.75rem;
   color: #737373;
   line-height: 1.4;
-  margin: 8rem 0;
 }
 
 .footnote a {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
-  display: block;
   margin-top: 0.15rem; /* very tight spacing */
 }
 /* Height-responsive spacing entire page */
