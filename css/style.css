@@ -372,12 +372,6 @@ main {
   border-radius: 3px;
 }
 
-/* Prevent the <video> from becoming the multi-column container */
-.project-masonry .m-item {
-  break-inside: avoid;
-  display: inline-block; /* key for multi-column: item becomes a single “box” */
-  width: 100%;
-}
 
 .project-masonry video {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
