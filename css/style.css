@@ -317,14 +317,12 @@ main {
 .project-masonry {
   column-count: 1;
   column-gap: 2rem;         /* gutter between columns */
-  margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin: 2rem 0 5rem;
 }
 
 .project-masonry .m-item {
   break-inside: avoid;
   margin: 0 0 2rem;
-
   display: inline-block; /* IMPORTANT for column masonry */
   width: 100%;           /* IMPORTANT: prevents “half column” */
 }
@@ -364,6 +362,7 @@ main {
 
   .project-masonry .m-item.wide {
   column-span: all;
+  display: block; /* helps column-span apply in some browsers */
   }
 
   /* Extra LinkedIn spacing on desktop */
