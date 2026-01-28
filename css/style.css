@@ -315,26 +315,11 @@ main {
 
 /* Masonry: two columns on desktop, one on mobile */
 .project-masonry {
-  column-count: 1;
-  column-gap: 2rem;         /* gutter between columns */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   margin: 2rem 0 5rem;
 }
-
-.project-masonry .m-item {
-  break-inside: avoid;
-  margin: 0 0 2rem;
-  display: inline-block; /* IMPORTANT for column masonry */
-  width: 100%;           /* IMPORTANT: prevents “half column” */
-}
-
-.project-masonry .m-item img,
-.project-masonry .m-item video {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 3px;
-}
-
 
 /* Global subtle image/video shadow */
 .project-card img,
@@ -358,18 +343,25 @@ main {
   }
 
   /* Masonry layout */
-  .project-masonry { column-count: 2; }
+  .project-masonry     grid-template-columns: 1fr 1fr;
+  }
 
   .project-masonry .m-item.wide {
-  column-span: all;
-  display: block; /* helps column-span apply in some browsers */
+    grid-column: 1 / -1;
   }
+
+.project-masonry .m-item img,
+.project-masonry .m-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+}
 
   /* Extra LinkedIn spacing on desktop */
   .sidebar nav a.nav-linkedin {
     margin-top: 2em; /* gives visual separation */
   }
-}
 
 /* =========================
    Mobile (<=768px)
