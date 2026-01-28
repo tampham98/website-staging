@@ -252,6 +252,43 @@ main {
 .skills { display: flex; flex-wrap: wrap; list-style: none; }
 .skills li { font-size: 1rem; color: #9442A9; font-weight: 500; }
 
+/* Back to Top Btn */
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 2000;
+
+  padding: .6rem .8rem;
+  border: 1px solid rgba(56,56,56,.25);
+  border-radius: 999px;
+  background: #F2F2F2;
+  color: #383838;
+  font-size: .9rem;
+  cursor: pointer;
+
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  border-color: rgba(197,7,82,.6);
+  color: #C50752;
+}
+
+/* Optional: don’t show on very small screens */
+@media (max-width: 480px) {
+  .back-to-top { right: .75rem; bottom: .75rem; }
+}
 
 /* =========================
  Subpages

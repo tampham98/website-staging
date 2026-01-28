@@ -211,6 +211,10 @@ standards.
 
   </div>
 
+<button class="back-to-top" type="button" aria-label="Back to top">
+  ↑ Top
+</button>
+
 <!-- JS at the very end so the DOM is loaded -->
 <script>
   // ===== Cache DOM refs =====
@@ -243,6 +247,24 @@ standards.
     const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
     menuToggle.setAttribute('aria-expanded', String(!expanded));
   });
+
+  // ===== Back to Top button =====
+const backToTopBtn = document.querySelector('.back-to-top');
+
+if (backToTopBtn) {
+  const showAfter = 600; // px scrolled before showing
+
+  function toggleBackToTop() {
+    backToTopBtn.classList.toggle('is-visible', window.scrollY > showAfter);
+  }
+
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  document.addEventListener('DOMContentLoaded', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
   // Close menu after clicking a nav item (mobile)
   siteNav.querySelectorAll('a[href^="#"]').forEach(a => {
