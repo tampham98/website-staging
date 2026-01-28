@@ -315,10 +315,22 @@ main {
 
 /* Masonry: two columns on desktop, one on mobile */
 .project-masonry {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin: 2rem 0 5rem;
+  column-count: 1;
+  column-gap: 2rem;         /* gutter between columns */
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.m-item {
+  break-inside: avoid;          /* keep each figure intact */
+  margin: 0 0 2rem;
+}
+
+.m-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;         /* match your style */
 }
 
 /* Global subtle image/video shadow */
@@ -343,20 +355,14 @@ main {
   }
 
   /* Masonry layout */
-  .project-masonry     grid-template-columns: 1fr 1fr;
-  }
+  .project-masonry { column-count: 2; }
 
   .project-masonry .m-item.wide {
-    grid-column: 1 / -1;
-  }
-
-.project-masonry .m-item img,
-.project-masonry .m-item video {
   width: 100%;
-  height: auto;
+  column-span: all;
+  break-inside: avoid;
   display: block;
-  border-radius: 3px;
-}
+  }
 
   /* Extra LinkedIn spacing on desktop */
   .sidebar nav a.nav-linkedin {
