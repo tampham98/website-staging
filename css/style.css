@@ -321,17 +321,22 @@ main {
   margin-bottom: 5rem;
 }
 
-.m-item {
-  break-inside: avoid;          /* keep each figure intact */
+.project-masonry .m-item {
+  break-inside: avoid;
   margin: 0 0 2rem;
+
+  display: inline-block; /* IMPORTANT for column masonry */
+  width: 100%;           /* IMPORTANT: prevents “half column” */
 }
 
-.m-item img {
+.project-masonry .m-item img,
+.project-masonry .m-item video {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 3px;         /* match your style */
+  border-radius: 3px;
 }
+
 
 /* Global subtle image/video shadow */
 .project-card img,
@@ -358,24 +363,8 @@ main {
   .project-masonry { column-count: 2; }
 
   .project-masonry .m-item.wide {
-  width: 100%;
   column-span: all;
-  break-inside: avoid;
-  display: block;
   }
-
-  /* Masonry media should behave like images */
-.project-masonry .m-item video {
-  width: 100%;
-  height: auto;
-  display: block;        /* important: avoids inline baseline weirdness */
-  border-radius: 3px;
-}
-
-
-.project-masonry video {
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-}
 
   /* Extra LinkedIn spacing on desktop */
   .sidebar nav a.nav-linkedin {
