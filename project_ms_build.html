@@ -138,7 +138,10 @@
     </main>
 
   </div>
-
+  
+<button class="back-to-top" type="button" aria-label="Back to top">
+  ↑ Top
+</button>
   <script>
 // ================================
 // NAV + SCROLL HIGHLIGHT
@@ -175,6 +178,24 @@ function setActiveOnScroll() {
 
 window.addEventListener('scroll', setActiveOnScroll, { passive: true });
 document.addEventListener('DOMContentLoaded', setActiveOnScroll);
+
+  // ===== Back to Top button =====
+const backToTopBtn = document.querySelector('.back-to-top');
+
+if (backToTopBtn) {
+  const showAfter = 600; // px scrolled before showing
+
+  function toggleBackToTop() {
+    backToTopBtn.classList.toggle('is-visible', window.scrollY > showAfter);
+  }
+
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  document.addEventListener('DOMContentLoaded', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // ===== Mobile hamburger =====
 if (menuToggle && siteNav) {

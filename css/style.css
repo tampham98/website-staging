@@ -364,6 +364,25 @@ main {
   display: block;
   }
 
+  /* Masonry media should behave like images */
+.project-masonry .m-item video {
+  width: 100%;
+  height: auto;
+  display: block;        /* important: avoids inline baseline weirdness */
+  border-radius: 3px;
+}
+
+/* Prevent the <video> from becoming the multi-column container */
+.project-masonry .m-item {
+  break-inside: avoid;
+  display: inline-block; /* key for multi-column: item becomes a single “box” */
+  width: 100%;
+}
+
+.project-masonry video {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+
   /* Extra LinkedIn spacing on desktop */
   .sidebar nav a.nav-linkedin {
     margin-top: 2em; /* gives visual separation */
