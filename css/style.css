@@ -332,6 +332,12 @@ main {
   display: block;
   border-radius: 3px;         /* match your style */
 }
+.m-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+}
 
 /* Global subtle image/video shadow */
 .project-card img,
