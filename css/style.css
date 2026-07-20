@@ -75,7 +75,8 @@ body {
   flex-direction: column;
   align-items: stretch;
   gap: 1.25rem;
-  height: 100vh;
+  /* No fixed height: let the sidebar stretch to the full page height (flex
+     align-items: stretch) so the sticky nav can travel the whole scroll. */
 }
 
 .sidebar-inner {
@@ -84,7 +85,7 @@ body {
   z-index: 100;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 4rem);     /* one viewport tall (minus sidebar padding) so it stays pinned */
   gap: clamp(8px, 2.5vh, 28px);   /* proportional vertical rhythm */
 }
 
